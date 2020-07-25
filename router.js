@@ -1,7 +1,7 @@
 const express = require('express');
 const {Pool} = require('pg');
 
-const cString = process.env.DATABASE;
+const cString = process.env.DATABASE_URL;
 let pool = null;
 
 if(process.env.ENV !== "PRODUCTION"){
@@ -31,6 +31,7 @@ pool.query(`CREATE TABLE urls(
 const router = express.Router();
 
 router.post("/new", async (req,res)=>{
+    console.log(req.body);
     let slug = req.body.slug;
     if(slug ===  undefined || slug === "" ){
         slug = Math.random().toString(32).substring(2,10);
@@ -61,5 +62,7 @@ router.get("/:id", async (req, res)=>{
         });
     }
 });
+
+router.get("/", express.static("./public"));
 
 module.exports = router;
