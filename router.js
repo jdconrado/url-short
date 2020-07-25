@@ -63,6 +63,6 @@ router.get("/:id", async (req, res)=>{
     }
 });
 
-router.get("/", express.static("./public"));
+router.use("/", express.static("./public"));
 
 module.exports = router;
