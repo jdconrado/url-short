@@ -9,7 +9,7 @@ if(process.env.ENV !== "PRODUCTION"){
         user: 'postgres',
         host: 'localhost',
         database: 'urlshort',
-        password: 'jd04230123',
+        password: 'passwordhere',
         port: 5432,
     });
 }else{
